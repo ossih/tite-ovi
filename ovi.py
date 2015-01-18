@@ -9,6 +9,9 @@ import time
 import socket
 from espeak import espeak
 
+# Configuration for remote host
+IP='10.0.0.50'
+
 # Jos on lanit, ota kommentti pois seuraavasta niin tämä ei vine
 #sys.exit()
 
@@ -30,7 +33,7 @@ espeak.set_parameter(espeak.Parameter.Pitch,0)
 socket.setdefaulttimeout(2)
 def fetchStatus():
     sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    sock.connect(('10.0.0.50',5000))
+    sock.connect((IP,5000))
     status=sock.recv(1)
     sock.close()
     return status
